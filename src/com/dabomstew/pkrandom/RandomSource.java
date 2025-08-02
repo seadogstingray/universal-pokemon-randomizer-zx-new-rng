@@ -103,12 +103,8 @@ public class RandomSource {
     }
 
     public static long pickSeed() {
-        long value = 0;
-        byte[] by = SecureRandom.getSeed(6);
-        for (int i = 0; i < by.length; i++) {
-            value |= ((long) by[i] & 0xffL) << (8 * i);
-        }
-        return value;
+        SecureRandom sr = new SecureRandom();
+        return sr.nextLong();
     }
 
     public static Random instance() {
